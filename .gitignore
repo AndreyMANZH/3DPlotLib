@@ -1,0 +1,7 @@
+/Debug
+/3DPLOT-GL/Debug
+.vs/3DPLOT-GL/v16/.suo
+.vs/3DPLOT-GL/v16/Browse.VC.db
+*.obj
+*.idb
+3DPLOT-GL/main.cpp

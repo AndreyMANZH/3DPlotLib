@@ -1,7 +1,6 @@
 #include "Scene.h"
 #include <GL/glut.h>
-#include "Axes.h"
-
+#include "PointSeries.h"
 
 static float sphi = -155, stheta = 60;
 static float sdepth = 5;
@@ -12,12 +11,14 @@ static long xsize, ysize;
 static int downX, downY;
 static bool leftButton = false, middleButton = false;
 
-	static 	bool _isXAxis;
-	static bool _isYAxis;
-	static bool _isZAxis = true;
-	static bool _isshowXYZPlate = true;
+static 	bool _isXAxis = true;
+static bool _isYAxis = true;
+static bool _isZAxis = true;
+static bool _isshowXYZPlate = true;
 
-Axes* axes;
+// Определение статических переменных
+Axes* Scene::axes = new Axes;
+PointSeries Scene::pointSeries;
 Scene::Scene(int width, int height)
 {
 	this->width = width;
@@ -28,7 +29,7 @@ Scene::Scene(int width, int height)
 	this->green = 1;
 	this->blue = 1;
 	this->alpha = 1;
-	axes = new Axes;
+	
 	
 	GLinit();
 }
@@ -98,6 +99,7 @@ void Scene::DisplayCallback()
 	axes->showXYZPlate(isshowXYZPlate());
 	
 
+	DrawPointSeries();
 
 	glutSwapBuffers();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -178,4 +180,24 @@ void Scene::showXYZPlate(bool state)
 bool Scene::isshowXYZPlate()
 {
 	return _isshowXYZPlate;
+}
+
+void Scene::push_PointSeries(PointSeries& pointSeries)
+{
+	Scene::pointSeries = pointSeries;
+}
+
+void Scene::DrawPointSeries()
+{
+	if (pointSeries.getSize() > 0)
+	{
+		glColor3f(0, 0, 0);
+		glPointSize(1);
+		glBegin(GL_POINTS);
+		for (int i = 0; i < pointSeries.getSize(); ++i)
+		{
+			glVertex3f(pointSeries[i].getX()/PointSeries::getMax(), pointSeries[i].getY() / PointSeries::getMax(), pointSeries[i].getZ() / PointSeries::getMax());
+		}
+		glEnd();
+	}
 }

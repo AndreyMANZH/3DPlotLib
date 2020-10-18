@@ -10,12 +10,17 @@ private:
 	double x;
 	double y;
 	double z;
+
+	double r;
+	double g;
+	double b;
 public:
 	double getX();
 	double getY();
 	double getZ();
 
 	Point(double x, double y, double z);
+	Point(double x, double y, double z, double r, double g, double b);
 	~Point(); 
 };
 

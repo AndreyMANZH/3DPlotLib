@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3D CHAR SOFT", "3D CHAR SOFT\3D CHAR SOFT.vcxproj", "{CB4CD26F-6607-4F84-8A56-689F79EF3231}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3DPLOT-GL", "3DPLOT-GL\3DPLOT-GL.vcxproj", "{CB4CD26F-6607-4F84-8A56-689F79EF3231}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FBF892A5-7E7F-4CBD-91EF-B036CFD3149F}
+		SolutionGuid = {31D9E962-0FFA-4048-B532-3C28F5094285}
 	EndGlobalSection
 EndGlobal
