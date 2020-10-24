@@ -1,4 +1,22 @@
 #include "Point.h"
+Point::Point()
+{
+	this->x = 0;
+	this->y = 0;
+	this->z = 0;
+	this->r = 0;
+	this->g = 0;
+	this->b = 0;
+}
+Point::Point(const Point& p)
+{
+	this->x = p.x;
+	this->y = p.y;
+	this->z = p.z;
+	this->r = p.r;
+	this->g = p.g;
+	this->b = p.b;
+}
 Point::Point(double x, double y, double z)
 {
 	this->x = x;

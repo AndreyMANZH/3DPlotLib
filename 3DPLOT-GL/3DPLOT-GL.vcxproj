@@ -141,16 +141,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Axes.cpp" />
+    <ClCompile Include="LineSeries.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="PointSeries.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Surface.cpp" />
+    <ClCompile Include="SurfaceSeries.cpp" />
+    <ClCompile Include="TextLabel.cpp" />
+    <ClCompile Include="Tools.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Axes.h" />
+    <ClInclude Include="LineSeries.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="PointSeries.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Surface.h" />
+    <ClInclude Include="SurfaceSeries.h" />
+    <ClInclude Include="TextLabel.h" />
+    <ClInclude Include="Tools.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

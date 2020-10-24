@@ -7,7 +7,7 @@ public:
 	void showXAxis(bool show);
 	void showYAxis(bool show);
 	void showZAxis(bool show);
-	void showXYZPlate(bool state);
+	void showXYZPlate(bool state, float& sphi, float& stheta);
 
 
 private:
