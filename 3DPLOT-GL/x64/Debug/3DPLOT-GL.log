@@ -1,0 +1,143 @@
+﻿  Axes.cpp
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(16,28): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(27,28): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(38,16): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(39,16): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(45,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(46,19): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(57,16): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(58,16): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(64,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(65,19): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(77,28): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(84,24): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(85,23): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(91,16): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(92,16): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(104,23): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(105,22): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(111,16): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(112,16): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(131,23): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(132,24): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(138,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(139,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(150,22): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(151,23): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(157,19): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(158,19): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(168,28): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(172,36): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(173,35): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(174,36): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(175,37): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(180,35): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(181,34): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(182,35): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(183,36): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(189,35): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(190,36): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(191,37): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(192,36): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(198,34): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(199,35): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(200,36): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(201,35): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(207,36): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(208,35): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(209,34): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(210,35): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(216,37): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(217,36): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(218,35): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(219,36): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(244,26): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(273,26): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(299,26): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(357,28): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(367,28): warning C4305: аргумент: усечение из "double" в "GLfloat"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Axes.cpp(377,28): warning C4305: аргумент: усечение из "double" в "GLfloat"
+  LineSeries.cpp
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\LineSeries.cpp(34,35): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  main.cpp
+  Point.cpp
+  PointSeries.cpp
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\PointSeries.cpp(45,36): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  Scene.cpp
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(178,44): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(178,17): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(181,29): warning C4838: Преобразование из "double" в "float" требует сужающего преобразования.
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(181,29): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(181,56): warning C4838: Преобразование из "double" в "float" требует сужающего преобразования.
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(181,56): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(217,35): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(217,71): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(222,38): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(395,79): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(395,56): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(395,33): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(401,21): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(401,18): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(401,15): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(421,21): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(421,18): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(421,15): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(427,21): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(427,18): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(427,15): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(491,44): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(491,33): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(491,22): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(493,25): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(493,21): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(493,17): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(494,25): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(494,21): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(494,17): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(495,25): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(495,21): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(495,17): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(531,42): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(531,31): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(531,21): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(532,25): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(532,21): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(532,17): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(533,25): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(533,21): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(533,17): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(534,25): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(534,21): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(534,17): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(440,12): warning C4101: g: неиспользованная локальная переменная
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(440,9): warning C4101: r: неиспользованная локальная переменная
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(681,52): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(681,36): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(681,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(682,45): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(682,36): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(682,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(684,52): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(684,36): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(684,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(685,39): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(685,29): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(685,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(687,52): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(687,36): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(687,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(688,39): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(688,23): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(688,13): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+  Surface.cpp
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Surface.cpp(21,37): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  SurfaceSeries.cpp
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\SurfaceSeries.cpp(22,38): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  TextLabel.cpp
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\TextLabel.cpp(8,25): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\TextLabel.cpp(8,22): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\TextLabel.cpp(8,19): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+  Tools.cpp
+  Создание кода...
+Scene.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp___glewGenBuffers в функции "private: void __cdecl Scene::GLinit(void)" (?GLinit@Scene@@AEAAXXZ).
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\x64\Debug\3DPLOT-GL.exe : fatal error LNK1120: неразрешенных внешних элементов: 1

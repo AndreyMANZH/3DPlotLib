@@ -37,7 +37,6 @@ Point::~Point()
 	//
 }
 
-
 void Point::setX(double x)
 {
 	this->x = x;
@@ -62,4 +61,17 @@ double Point::getY()
 double Point::getZ()
 {
 	return this->z;
+}
+
+double Point::getR()
+{
+	return this->r;
+}
+double Point::getG()
+{
+	return this->g;
+}
+double Point::getB()
+{
+	return this->b;
 }

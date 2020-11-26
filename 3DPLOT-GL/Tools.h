@@ -1,12 +1,30 @@
 #pragma once
 /*
-* ‘ункци€ dataNormalize предназначена дл€ 
-* приведени€ значение data которое входит в диапазон [min;max]
-* в диапазон [-1;1]
-* результат работы функции data в диапазоне [-1;1]
+* Ќормализаци€ данных в придел [-1; 1]
+* data - значение которое подвергаетс€ нормализации
+* min - минимальное знаение дл€ диапазона в котором находитс€ data
+* mid - среднее значение  дл€ диапазона в котором находитс€ data
+* max - максимальное значение  дл€ диапазона в котором находитс€ data
 */
+#define GRAD(X) X*3.14159265/180
+
 double dataNormalize(double data, double min, double mid, double max);
 /*
 * ‘ункци€ isClose предназначена дл€ сравнени€ данных
 */
-bool isClose(double data1, double data2, double absTolerance = 0.0001);
+template <typename T>
+bool isClose(T data1, T data2, double absTolerance=0.0001)
+{
+	return abs(data1 - data2) <= absTolerance;
+}
+/*
+* ‘ункци€ round предназначена дл€ округлени€ данных
+* data - значение которое подвергаетс€ округлению
+* rest - остаток после точки
+*/
+double round(double data, int rest);
+
+/*
+* ¬ектор нормаль к поверхности треугольника
+*/
+void norm_vector(double A[3], double B[3], double C[3], double N[3]);

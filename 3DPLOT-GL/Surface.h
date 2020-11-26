@@ -11,6 +11,7 @@ class Surface
 private:
 	
 	std::vector<std::vector<Point>*>* vector_surface;
+	int point_count = 0;
 public:
 	struct SurfaceRow
 	{
@@ -19,14 +20,19 @@ public:
 		~SurfaceRow();
 
 		void push_back(Point& point);
+		
+		int get_points_count();								// Количество точек в ряде поверхности
+
 		Point& operator[](int index);
-		std::vector<Point>* getRowData();
+		std::vector<Point>* get_rowdata();
 	};
 
 	Surface();
 	~Surface();
 	void push_back(Surface::SurfaceRow* row);
 	std::vector<Point>* operator[](int index);
-	int getSize();
+	
+	int getSize();											// Количество рядов
+	int get_points_count();									// Количество точек поверхности
 };
 

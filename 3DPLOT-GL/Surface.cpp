@@ -14,11 +14,17 @@ Surface::~Surface()
 }
 void Surface::push_back(Surface::SurfaceRow* row)
 {
-	this->vector_surface->push_back(row->getRowData());
+	this->vector_surface->push_back(row->get_rowdata());
+	// Увеличиваем количество точек поверхности
+	this->point_count += row->get_points_count();
 }
 int Surface::getSize()
 {
 	return this->vector_surface->size();
+}
+int Surface::get_points_count()
+{
+	return this->point_count;
 }
 std::vector<Point>* Surface::operator[](int index)
 {
@@ -26,7 +32,6 @@ std::vector<Point>* Surface::operator[](int index)
 }
 
 // Реализация вспомогательной структуры = ряд поверхности
-
 Surface::SurfaceRow::SurfaceRow()
 {
 	this->vector_row = new 	std::vector<Point>;
@@ -40,12 +45,15 @@ void Surface::SurfaceRow::push_back(Point& point)
 {
 	this->vector_row->push_back(point);
 }
-
+int Surface::SurfaceRow::get_points_count()
+{
+	return this->vector_row->size();
+}
 Point& Surface::SurfaceRow::operator[](int index)
 {
 	return this->vector_row->at(index);
 }
-std::vector<Point>* Surface::SurfaceRow::getRowData()
+std::vector<Point>* Surface::SurfaceRow::get_rowdata()
 {
 	return this->vector_row;
 }

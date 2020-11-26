@@ -11,6 +11,8 @@ SurfaceSeries::~SurfaceSeries()
 void SurfaceSeries::push_back(Surface* surface)
 {
 	this->vector_surfaces->push_back(surface);
+	//Увеличиваем количество точек
+	this->points_count += surface->get_points_count();
 }
 
 Surface* SurfaceSeries::operator[](int index)
@@ -20,4 +22,8 @@ Surface* SurfaceSeries::operator[](int index)
 int SurfaceSeries::getSize()
 {
 	return this->vector_surfaces->size();
+}
+int SurfaceSeries::get_points_count()
+{
+	return this->points_count;
 }

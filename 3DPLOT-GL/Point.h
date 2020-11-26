@@ -19,6 +19,9 @@ public:
 	double getY();
 	double getZ();
 
+	double getR();
+	double getG();
+	double getB();
 	Point();
 	Point(const Point& p);
 	Point(double x, double y, double z);
