@@ -2,9 +2,9 @@
 
 
 LineSeries::LineSeries():
-	m_vector_lines(nullptr)
+	m_vector_lines(new std::vector<Line*>)
 {
-	m_vector_lines = new std::vector<Line*>;
+
 }
 
 LineSeries::~LineSeries()

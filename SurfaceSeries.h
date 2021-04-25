@@ -48,8 +48,6 @@ public:
 	std::size_t get_points_count();
 private:
 	std::vector<Surface*>* m_vector_surfaces;
-	int m_points_count = 0;						
-	//double* NORMALIZED_POINTS_ARRAY;
-	
+	int m_points_count;						
 };
 

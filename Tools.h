@@ -3,7 +3,6 @@
 #include "Point.h"
 #include <GL/glut.h>
 
-#define GRAD(X) X*3.14159265/180
 /**
  * @brief Пространство имён для работы с математическими функциями
  * 
@@ -27,6 +26,12 @@ namespace math_tools{
 
 	template <typename T>
 	bool is_close(T a, T b, double abs_tolerance=0.0001);
+	
+	/**
+	 * @brief Функция для перевода градусы в радианты
+	 * 
+	 */
+	double grad_to_rad(double grad);
 	/**
 	* @brief Функция round предназначена для округления данных
 	* @param data значение которое подвергается округлению
@@ -34,11 +39,7 @@ namespace math_tools{
 	*/
 	double round(double data, int rest = 100);
 }
-template <typename T>
-bool math_tools::is_close(T a, T b, double abs_tolerance)
-{
-    return std::abs(a - b) <= abs_tolerance;
-}
+
 /**
  * @brief Пространство имён для работы с графическими функциями
  * 
@@ -46,11 +47,26 @@ bool math_tools::is_close(T a, T b, double abs_tolerance)
 namespace paint_tools
 {
 	/**
-	 * @brief Функция round предназначена рисования линии в пространстве OpenGL
+	 * @brief Функция paint_line предназначена рисования линии в пространстве OpenGL
 	 * 
 	 * @param p1 первая точка линии
 	 * @param p2 вторая точка линии 
 	 * @param line_w толщина линии default: 1
 	 */
-	void paint_line(Point p1, Point p2, double line_w = 1);
+	void paint_line(Point &&p1, Point &&p2, double line_w = 1);
+	/**
+	 * @brief Функция paint_square предназначена рисования четырехугольника в пространстве OpenGL 
+	 * 
+	 * @param p1 первая точка 
+	 * @param p2 вторая точка 
+	 * @param p3 третья точкаа 
+	 * @param p4 четвертая точка 
+	 */
+	void paint_square(Point &&p1, Point &&p2, Point &&p3, Point &&p4);
+}
+
+template <typename T>
+bool math_tools::is_close(T a, T b, double abs_tolerance)
+{
+    return std::abs(a - b) <= abs_tolerance;
 }

@@ -2,8 +2,6 @@
 #include "Scene.h"
 
 #include "Tools.h"
-
-
 /**
  * @brief Блок определения статических переменных
  * 
@@ -32,6 +30,9 @@ double Scene::m_mid_z = 0.0;
 double Scene::m_min_z = -1.0;
 double Scene::m_step_z = 0.1;
 
+const double Scene::CAMERA_MAX_DISTANCE = 11.0;
+const double Scene::CAMERA_MIN_DISTANCE = 1.0;
+
 float Scene::m_sphi = -20.0;
 float Scene::m_stheta = 60.0;
 float Scene::m_sdepth = 5.0;
@@ -48,12 +49,12 @@ bool Scene::m_left_btn = false;
 bool Scene::m_middle_btn = false;
 /**
  * @brief Блок инициализации динамических массивов для точек, линий и поверхностей
- * 
+ * 		  И цвета каждого пикселя который соответствует точке
  */
 double* Scene::m_point_series_array = nullptr;
 double* Scene::m_line_series_array = nullptr;
-double* Scene::m_surface_series_array = nullptr;
-
+double* Scene::m_surface_series_data_array = nullptr;
+double* Scene::m_surface_series_color_array = nullptr;
 /**
  * @brief Блок инициализации размеров динамических массивов для точек, линий и поверхностей
  *  
@@ -61,19 +62,17 @@ double* Scene::m_surface_series_array = nullptr;
 std::size_t Scene::m_point_arr_size = 0;
 std::size_t Scene::m_line_arr_size = 0;
 std::size_t Scene::m_surface_arr_size = 0;
-
-
-
-
+/**
+ * @brief Construct a new Scene:: Scene object
+ * 
+ */
 
 Scene::Scene(int width, int height):
 	m_width(width), m_height(height), m_red(1),
 	m_green(1), m_blue(1), m_alpha(1)
 {
 	gl_init();
-
 }
-
 
 Scene::~Scene()
 {
@@ -81,7 +80,7 @@ Scene::~Scene()
 
 	delete[] m_point_series_array;
 	delete[] m_line_series_array;
-	delete[] m_surface_series_array;
+	delete[] m_surface_series_data_array;
 }
 
 void Scene::gl_init()
@@ -120,6 +119,7 @@ void Scene::gl_init()
 	glutPassiveMotionFunc(Scene::passive_motion_func);
 	glutMainLoop();
 }
+
 void Scene::client_to_opengl(int x, int y, double* ox, double* oy, double* oz)
 {
 	int vp[4];
@@ -132,9 +132,9 @@ void Scene::client_to_opengl(int x, int y, double* ox, double* oy, double* oz)
 	glGetDoublev(GL_MODELVIEW_MATRIX, mMatrix);
 	glGetDoublev(GL_PROJECTION_MATRIX, pMatrix);
 	glReadPixels(x, y, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &z);
-	gluUnProject(x, y, z, mMatrix, pMatrix, vp, ox, oy, oz);
-	
+	gluUnProject(x, y, z, mMatrix, pMatrix, vp, ox, oy, oz);	
 }
+
 void Scene::display_callback()
 {
 	if (m_sphi < -360 || m_sphi > 360)
@@ -197,11 +197,19 @@ void Scene::motion_callback(int x, int y)
 		m_stheta += static_cast<float>(m_down_y - y) / 4.0;
 	} 
 	// Приближение
-	if (m_middle_btn) {
-
-		m_sdepth += static_cast<float>(m_down_y - y) / 10.0;
+	
+	if (m_middle_btn)
+	{
+		if (m_sdepth < CAMERA_MIN_DISTANCE)
+			m_sdepth = CAMERA_MIN_DISTANCE;
+		else
+			m_sdepth += static_cast<float>(m_down_y - y) / 10.0;
+		
+		if (m_sdepth > CAMERA_MAX_DISTANCE)
+			m_sdepth = CAMERA_MAX_DISTANCE;
+		else
+			m_sdepth += static_cast<float>(m_down_y - y) / 10.0;
 	}
-
 	m_down_x = x;
 	m_down_y = y;
 
@@ -238,20 +246,17 @@ void Scene::passive_motion_func(int x, int y)
 				Scene::m_select_y = -1000;
 				Scene::m_select_z = -1000;
 				glutPostRedisplay();
-			}
-
-		
-		}
-		
+			}		
+		}	
 	}
 
 	if (m_surface_arr_size> 0)
 	{
 		for (std::size_t i = 0; i < m_surface_arr_size; ++i)
 		{
-			temp_sel_x = m_surface_series_array[i];
-			temp_sel_y = m_surface_series_array[i + 1];
-			temp_sel_z = m_surface_series_array[i + 2];
+			temp_sel_x = m_surface_series_data_array[i];
+			temp_sel_y = m_surface_series_data_array[i + 1];
+			temp_sel_z = m_surface_series_data_array[i + 2];
 			// Если нашли совпадение по точке то полностью делаем перерисовку и полностью выходим из функции поиска
 			if (math_tools::is_close(temp_x, temp_sel_x, 0.02) && math_tools::is_close(temp_y, temp_sel_y, 0.02) && math_tools::is_close(temp_z, temp_sel_z, 0.02))
 			{
@@ -268,10 +273,7 @@ void Scene::passive_motion_func(int x, int y)
 				Scene::m_select_z = -1000;
 				glutPostRedisplay();
 			}
-
-		
 		}
-		
 	}
 }
 void Scene::scene_glut_init(int arg, char** argv)
@@ -304,7 +306,6 @@ void Scene::add_points_series(PointSeries& points_series)
 			// увеличение на 3 с учетом 3-х координат
 			j += 3;
 		}
-
 	}
 }
 
@@ -367,17 +368,34 @@ void Scene::add_surfaces_series(SurfaceSeries* surfaces_series)
 				}
 			}
 		}	
-		
-		m_surface_series_array = new double[m_surface_arr_size];
+	
+		m_surface_series_data_array = new double[m_surface_arr_size];
+		m_surface_series_color_array = new double[m_surface_arr_size];
+
 		double temp_x_1 = 0.0;
 		double temp_y_1 = 0.0;
 		double temp_z_1 = 0.0;
+
 		double temp_x_2 = 0.0;
 		double temp_y_2 = 0.0;
 		double temp_z_2 = 0.0;
+
 		double temp_x_3 = 0.0;
 		double temp_y_3 = 0.0;
 		double temp_z_3 = 0.0;
+
+		double temp_r_1 = 0.0;
+		double temp_g_1 = 0.0;
+		double temp_b_1 = 0.0;
+
+		double temp_r_2 = 0.0;
+		double temp_g_2 = 0.0;
+		double temp_b_2 = 0.0;
+
+		double temp_r_3 = 0.0;
+		double temp_g_3 = 0.0;
+		double temp_b_3 = 0.0;
+
 		std::size_t l = 0;
 		
 		//Идем по поверхностям
@@ -389,8 +407,7 @@ void Scene::add_surfaces_series(SurfaceSeries* surfaces_series)
 				// Идем по элементам ряда j i-й поверхности
 				int r = 0;				
 				for (std::size_t k = 0; k < (*(*surfaces_series)[i])[j]->get_size() - 1; )
-				{
-					
+				{		
 					switch (r)
 					{
 						case 0:
@@ -406,6 +423,17 @@ void Scene::add_surfaces_series(SurfaceSeries* surfaces_series)
 							temp_y_3 = math_tools::data_normalize((*(*(*surfaces_series)[i])[j+1])[k]->get_y(), Scene::get_min_y(), Scene::get_mid_y(), Scene::get_max_y());
 							temp_z_3 = math_tools::data_normalize((*(*(*surfaces_series)[i])[j+1])[k]->get_z(), Scene::get_min_z(), Scene::get_mid_z(), Scene::get_max_z());
 
+							temp_r_1 = (*(*(*surfaces_series)[i])[j])[k]->get_r();
+							temp_g_1 = (*(*(*surfaces_series)[i])[j])[k]->get_g();
+							temp_b_1 = (*(*(*surfaces_series)[i])[j])[k]->get_b();
+
+							temp_r_2 = (*(*(*surfaces_series)[i])[j + 1])[k + 1]->get_r();
+							temp_g_2 = (*(*(*surfaces_series)[i])[j + 1])[k + 1]->get_g();
+							temp_b_2 = (*(*(*surfaces_series)[i])[j + 1])[k + 1]->get_b();
+
+							temp_r_3 = (*(*(*surfaces_series)[i])[j+1])[k]->get_r();
+							temp_g_3 = (*(*(*surfaces_series)[i])[j+1])[k]->get_g();
+							temp_b_3 = (*(*(*surfaces_series)[i])[j+1])[k]->get_g();
 							r = 1;
 							break;
 						case 1:
@@ -421,30 +449,50 @@ void Scene::add_surfaces_series(SurfaceSeries* surfaces_series)
 							temp_y_3 = math_tools::data_normalize((*(*(*surfaces_series)[i])[j + 1])[k + 1]->get_y(), Scene::get_min_y(), Scene::get_mid_y(), Scene::get_max_y());
 							temp_z_3 = math_tools::data_normalize((*(*(*surfaces_series)[i])[j + 1])[k + 1]->get_z(), Scene::get_min_z(), Scene::get_mid_z(), Scene::get_max_z());
 
+							temp_r_1 = (*(*(*surfaces_series)[i])[j])[k]->get_r();
+							temp_g_1 = (*(*(*surfaces_series)[i])[j])[k]->get_g();
+							temp_b_1 = (*(*(*surfaces_series)[i])[j])[k]->get_b();
+
+							temp_r_2 = (*(*(*surfaces_series)[i])[j])[k + 1]->get_r();
+							temp_g_2 = (*(*(*surfaces_series)[i])[j])[k + 1]->get_g();
+							temp_b_2 = (*(*(*surfaces_series)[i])[j])[k + 1]->get_b();
+
+							temp_r_3 = (*(*(*surfaces_series)[i])[j + 1])[k + 1]->get_r();
+							temp_g_3 = (*(*(*surfaces_series)[i])[j + 1])[k + 1]->get_g();
+							temp_b_3 = (*(*(*surfaces_series)[i])[j + 1])[k + 1]->get_g();
 							r = 0;
 							++k;
 							break;
 					}
-						m_surface_series_array[l + 0] = temp_x_1;
-						m_surface_series_array[l + 1] = temp_y_1;
-						m_surface_series_array[l + 2] = temp_z_1;
+						m_surface_series_data_array[l + 0] = temp_x_1;
+						m_surface_series_data_array[l + 1] = temp_y_1;
+						m_surface_series_data_array[l + 2] = temp_z_1;
 						
-						m_surface_series_array[l + 3] = temp_x_2;
-						m_surface_series_array[l + 4] = temp_y_2;
-						m_surface_series_array[l + 5] = temp_z_2;
+						m_surface_series_data_array[l + 3] = temp_x_2;
+						m_surface_series_data_array[l + 4] = temp_y_2;
+						m_surface_series_data_array[l + 5] = temp_z_2;
 
-						m_surface_series_array[l + 6] = temp_x_3;
-						m_surface_series_array[l + 7] = temp_y_3;
-						m_surface_series_array[l + 8] = temp_z_3;
+						m_surface_series_data_array[l + 6] = temp_x_3;
+						m_surface_series_data_array[l + 7] = temp_y_3;
+						m_surface_series_data_array[l + 8] = temp_z_3;
+
+						m_surface_series_color_array[l + 0] = temp_r_1;
+						m_surface_series_color_array[l + 1] = temp_g_1;
+						m_surface_series_color_array[l + 2] = temp_b_1;
+						
+						m_surface_series_color_array[l + 3] = temp_r_2;
+						m_surface_series_color_array[l + 4] = temp_g_2;
+						m_surface_series_color_array[l + 5] = temp_b_2;
+
+						m_surface_series_color_array[l + 6] = temp_r_3;
+						m_surface_series_color_array[l + 7] = temp_g_3;
+						m_surface_series_color_array[l + 8] = temp_b_3;
 					// увеличение на 9 с учетом 9-х записаных координат
 					l += 9;
 				}
 			}
-
 		}
-
 	}
-	
 }
 void Scene::draw_point_series()
 {
@@ -470,9 +518,7 @@ void Scene::draw_surface_series()
 		glEnable(GL_LIGHTING);
 		glEnable(GL_LIGHT0);
 		// точечный источник света
-
 		// убывание интенсивности с расстоянием
-
 		// отключено (по умолчанию)
 
 		GLfloat light1_diffuse[] = {0.4, 0.7, 0.2};
@@ -485,43 +531,54 @@ void Scene::draw_surface_series()
 
 		glLightfv(GL_LIGHT1, GL_POSITION, light1_position);
 
-
-		glColor3f(0.55, 0.84, 0.53);
-
-		glVertexPointer(3, GL_DOUBLE, 0, m_surface_series_array);
+		//glColor3f(0.55, 0.84, 0.53);
 		glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_COLOR_ARRAY);
+		glVertexPointer(3, GL_DOUBLE, 0, m_surface_series_data_array);
+		glColorPointer(3, GL_DOUBLE, 0, m_surface_series_color_array);
+		
+		
 		// Делим на 3 так как на 1 треугольник требуеться 3 точки
 		glDrawArrays(GL_TRIANGLES, 0, m_surface_arr_size/3);
+		glDisableClientState(GL_COLOR_ARRAY);
+
 		glDisableClientState(GL_VERTEX_ARRAY);
 
 		glDisable(GL_LIGHTING);
 		glDisable(GL_LIGHT0);
 
 }
+
 double Scene::get_max_x()
 {
 	return Scene::m_max_x;
 }
+
 double Scene::get_min_x()
 {
 	return Scene::m_min_x;
 }
+
 double Scene::get_mid_x()
 {
 	return 0.5 * (Scene::get_min_x() + Scene::get_max_x());
 }
+
 double Scene::get_step_x()
 {
 	return Scene::m_step_x;
 }
+
 void Scene::set_max_x(double max_x)
 {
 	Scene::m_max_x = max_x;
 }
+
 void Scene::set_min_x(double min_x)
 {
 	Scene::m_min_x = min_x;
 }
+
 void Scene::set_step_x(double step_x)
 {
 	Scene::m_step_x = step_x;
@@ -531,26 +588,32 @@ double Scene::get_max_y()
 {
 	return Scene::m_max_y;
 }
+
 double Scene::get_min_y()
 {
 	return Scene::m_min_y;
 }
+
 double Scene::get_mid_y()
 {
 	return 0.5 * (Scene::get_min_y() + Scene::get_max_y());
 }
+
 double Scene::get_step_y()
 {
 	return Scene::m_step_y;
 }
+
 void Scene::set_max_y(double max_y)
 {
 	Scene::m_max_y = max_y;
 }
+
 void Scene::set_min_y(double min_y)
 {
 	Scene::m_min_y = min_y;
 }
+
 void Scene::set_step_y(double step_y)
 {
 	Scene::m_step_y = step_y;
@@ -560,26 +623,32 @@ double Scene::get_max_z()
 {
 	return Scene::m_max_z;
 }
+
 double Scene::get_min_z()
 {
 	return Scene::m_min_z;
 }
+
 double Scene::get_mid_z()
 {
 	return 0.5 * (Scene::get_min_z() + Scene::get_max_z());
 }
+
 double Scene::get_step_z()
 {
 	return Scene::m_step_z;
 }
+
 void Scene::set_max_z(double max_z)
 {
 	Scene::m_max_z = max_z;
 }
+
 void Scene::set_min_z(double min_z)
 {
 	Scene::m_min_z = min_z;
 }
+
 void Scene::set_step_z(double step_z)
 {
 	Scene::m_step_z = step_z;
@@ -592,16 +661,16 @@ void Scene::paint_project_line()
 	glBegin(GL_LINES);
 	double x, y, z;
 	
-	if ((sin(GRAD(Scene::m_sphi)) <= -0.15 && (sin(GRAD(Scene::m_sphi)) >= -1.0)))
+	if ((sin(math_tools::grad_to_rad(Scene::m_sphi)) <= -0.15 && (sin(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0)))
 		x = -1;
 	else
 		x = 1;
 		
-	if ((cos(GRAD(Scene::m_sphi)) <= 0.1 && (cos(GRAD(Scene::m_sphi)) >= -1.0)))
+	if ((cos(math_tools::grad_to_rad(Scene::m_sphi)) <= 0.1 && (cos(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0)))
 		y = -1;
 	else
 		y = 1;
-	if (cos(GRAD(Scene::m_stheta)) >= -1.0 && cos(GRAD(Scene::m_stheta)) <= -0.35)
+	if (cos(math_tools::grad_to_rad(Scene::m_stheta)) >= -1.0 && cos(math_tools::grad_to_rad(Scene::m_stheta)) <= -0.35)
 		z = 1;
 	else
 		z = -1;

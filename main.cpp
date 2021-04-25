@@ -49,7 +49,7 @@ int main(int arg, char** argv)
 	for(std::size_t p = 100000; p < 1000000;)
 	{
 		pressure.push_back(p);
-		p += 1000;
+		p += 100000;
 	}
 
 	double R[6] = { 0.1, 0.2, 0.3, 0.6, 0.8, 1.0};
@@ -77,10 +77,10 @@ int main(int arg, char** argv)
 		for (double &p : pressure)
 		{
 			sr = new Surface::SurfaceRow;
-			for (double t = 0; t <= 80; t+=1)
+			for (double t = 0; t <= 80; t+=5)
 			{
 				ent = Entropy(p, t, _R, 'R');
-				sr->add_point(new Point(t, ent, p));
+				sr->add_point(new Point(t, ent, p, t/80, p/1000000, t/80));
 				++point;
 			}
 			surf->add_surface_row(sr);
@@ -88,22 +88,22 @@ int main(int arg, char** argv)
 		s_ser->add_surface(surf);
 	}
 
-	for (auto _d : d)
-	{
-		surf = new Surface;
-		for (double &p : pressure)
-		{
-			sr = new Surface::SurfaceRow;
-			for (double t = 0; t <= 80; t+=1)
-			{
-				ent = Entropy(p, t, _d, 'd');
-				sr->add_point(new Point(t, ent, p));
-				++point;
-			}
-			surf->add_surface_row(sr);
-		}
-		s_ser->add_surface(surf);
-	}
+	// for (auto _d : d)
+	// {
+	// 	surf = new Surface;
+	// 	for (double &p : pressure)
+	// 	{
+	// 		sr = new Surface::SurfaceRow;
+	// 		for (double t = 0; t <= 80; t+=10)
+	// 		{
+	// 			ent = Entropy(p, t, _d, 'd');
+	// 			sr->add_point(new Point(t, ent, p, 0.6, p/1000000,0.1));
+	// 			++point;
+	// 		}
+	// 		surf->add_surface_row(sr);
+	// 	}
+	// 	s_ser->add_surface(surf);
+	// }
 
 
 	PointSeries* ps = new PointSeries;

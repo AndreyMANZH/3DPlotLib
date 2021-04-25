@@ -2,10 +2,8 @@
 
 
 PointSeries::PointSeries()
-	: m_vector_points(nullptr)
-{	
-	m_vector_points = new std::vector<Point*>;
-}
+	: m_vector_points(new std::vector<Point*>)
+{	}
 
 PointSeries::~PointSeries()
 {
@@ -14,9 +12,7 @@ PointSeries::~PointSeries()
 
 void PointSeries::add_point(Point* p)
 {
-
-	m_vector_points->push_back(p);
-	
+	m_vector_points->push_back(p);	
 }
 
 Point* PointSeries::operator[](std::size_t  index)

@@ -10,9 +10,9 @@ Axes::Axes() :
 
 	m_x_axis_grid_visible(true), m_y_axis_grid_visible(true),
 	m_z_axis_grid_visible(true), m_xyz_plate_visible(true),
-	m_x_axis_visible(true), m_y_axis_visible(true),
-	m_z_axis_visible(true), m_x_text_visible(true),
-	m_y_text_visible(true),	m_z_text_visible(true)
+	m_x_axis_visible(true), 	 m_y_axis_visible(true),
+	m_z_axis_visible(true), 	 m_x_text_visible(true),
+	m_y_text_visible(true),		 m_z_text_visible(true)
 
 {
 	glColor3f(0.24, 0.24, 0.24);
@@ -25,47 +25,39 @@ void Axes::paint_x_grid() const
 {
 	glColor3f(0.24, 0.24, 0.24);
 	//Переместить в другое место (что бы не считать каждый раз при перерисовке....)
-	double norm_x_step = (Scene::get_step_x() * 2) / ((Scene::get_max_x() - Scene::get_min_x()));
-	double norm_y_step = (Scene::get_step_y() * 2) / ((Scene::get_max_y() - Scene::get_min_y()));
+	double norm_x_step = (Scene::get_step_x() * 2.0) / ((Scene::get_max_x() - Scene::get_min_x()));
+	double norm_y_step = (Scene::get_step_y() * 2.0) / ((Scene::get_max_y() - Scene::get_min_y()));
 	glLineWidth(1);
 	glBegin(GL_LINES);
-	if (cos(GRAD(Scene::m_stheta)) >= MIN_THETA && cos(GRAD(Scene::m_stheta)) <= MAX_THETA)
+	if (cos(math_tools::grad_to_rad(Scene::m_stheta)) >= MIN_THETA && cos(math_tools::grad_to_rad(Scene::m_stheta)) <= MAX_THETA)
 	{
-		glBegin(GL_LINES);
-			for (double i = -1; ; i += norm_x_step)
+			for (double i = -1.0; ; i += norm_x_step)
 			{
-				glVertex3f(i, -1, 1);
-				glVertex3f(i, 1, 1);
+				paint_tools::paint_line(Point(i, -1.0, 1.0), Point(i, 1.0, 1.0));
 				if (math_tools::is_close(i, 1.0))
 					break;
 			}
-			for (double i = -1;; i += norm_y_step)
+			for (double i = -1.0;; i += norm_y_step)
 			{
-				glVertex3f(-1, i, 1);
-				glVertex3f(1, i, 1);
+				paint_tools::paint_line(Point(-1.0, i, 1.0), Point(1.0, i, 1.0));
 				if (math_tools::is_close(i, 1.0))
 					break;
 			}
-		glEnd();
 	}
 	else
 	{
-		glBegin(GL_LINES);
-			for (double i = -1; ; i += norm_x_step)
+			for (double i = -1.0; ; i += norm_x_step)
 			{
-				glVertex3f(i, -1, -1);
-				glVertex3f(i, 1, -1);
+				paint_tools::paint_line(Point(i, -1.0, -1.0), Point(i, 1.0, -1.0));
 				if (math_tools::is_close(i, 1.0))
 					break;
 			}
-			for (double i = -1;; i += norm_y_step)
+			for (double i = -1.0;; i += norm_y_step)
 			{
-				glVertex3f(-1, i, -1);
-				glVertex3f(1, i, -1);
+				paint_tools::paint_line(Point(-1.0, i, -1.0), Point(1.0, i, -1.0));
 				if (math_tools::is_close(i, 1.0))
 					break;
 			}
-		glEnd();	
 	}
 
 }
@@ -74,166 +66,132 @@ void Axes::paint_y_grid() const
 	double norm_x_step = (Scene::get_step_x() * 2) / ((Scene::get_max_x() - Scene::get_min_x()));
 	double norm_z_step = (Scene::get_step_z() * 2) / ((Scene::get_max_z() - Scene::get_min_z()));
 	glColor3f(0.24, 0.24, 0.24);
-	if ((cos(GRAD(Scene::m_sphi)) <= 0.1 && (cos(GRAD(Scene::m_sphi)) >= -1.0)))
+	if ((cos(math_tools::grad_to_rad(Scene::m_sphi)) <= 0.1 && (cos(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0)))
 	{
-		glBegin(GL_LINES);
-
-			for (double i = -1;; i += norm_z_step)
+			for (double i = -1.0;; i += norm_z_step)
 			{
-				glVertex3f(-1, -1, i);
-				glVertex3f(1, -1, i);
+				paint_tools::paint_line(Point(-1.0, -1.0, i), Point(1.0, -1.0, i));
 				if (math_tools::is_close(i, 1.0))
 					break;
 			}
 			for (double i = -1;; i += norm_x_step)
 			{
-				glVertex3f(i, -1, 1);
-				glVertex3f(i, -1, -1);
+				paint_tools::paint_line(Point(i, -1.0, 1.0), Point(i, -1.0, -1.0));
 				if (math_tools::is_close(i, 1.0))
 					break;
 			}
-		glEnd();
 	}
 	else
 	{
-		glBegin(GL_LINES);
-
 			for (double i = -1;; i += norm_z_step)
 			{
-				glVertex3f(-1, 1, i);
-				glVertex3f(1, 1, i);
+				paint_tools::paint_line(Point(-1.0, 1.0, i), Point(1.0, 1.0, i));
 				if (math_tools::is_close(i, 1.0))
 					break;
 			}
 			for (double i = -1;; i += norm_x_step)
 			{
-				glVertex3f(i, 1, 1);
-				glVertex3f(i, 1, -1);
+				paint_tools::paint_line(Point(i, 1.0, 1.0), Point(i, 1.0, -1.0));
 				if (math_tools::is_close(i, 1.0))
 					break;
 			}
-		glEnd();
 	}
-
-	
-
 }
 void Axes::paint_z_grid() const
 {
-	double norm_y_step = (Scene::get_step_y() * 2) / ((Scene::get_max_y() - Scene::get_min_y()));
-	double norm_z_step = (Scene::get_step_z() * 2) / ((Scene::get_max_z() - Scene::get_min_z()));
-	if ((sin(GRAD(Scene::m_sphi)) <= MAX_PHI && (sin(GRAD(Scene::m_sphi)) >= MIN_PHI)))
+	double norm_y_step = (Scene::get_step_y() * 2.0) / ((Scene::get_max_y() - Scene::get_min_y()));
+	double norm_z_step = (Scene::get_step_z() * 2.0) / ((Scene::get_max_z() - Scene::get_min_z()));
+	if ((sin(math_tools::grad_to_rad(Scene::m_sphi)) <= MAX_PHI && (sin(math_tools::grad_to_rad(Scene::m_sphi)) >= MIN_PHI)))
 	{
-		glBegin(GL_LINES);
 			for (double i = -1;; i += norm_z_step)
 			{
-				glVertex3f(-1, 1, i);
-				glVertex3f(-1, -1, i);
+				paint_tools::paint_line(Point(-1.0, 1.0, i), Point(-1.0, -1.0, i));
 				if (math_tools::is_close(i, 1.0))
 					break;
 			}
-			for (double i = -1;; i += norm_y_step)
+			for (double i = -1.0;; i += norm_y_step)
 			{
-				glVertex3f(-1, i, 1);
-				glVertex3f(-1, i, -1);
+				paint_tools::paint_line(Point(-1.0, i, 1.0), Point(-1.0, i, -1.0));
 				if (math_tools::is_close(i, 1.0))
 					break;
 			}
-		glEnd();
 	}
 	else
 	{
-		glBegin(GL_LINES);
-			for (double i = -1;; i += norm_z_step)
+			for (double i = -1.0;; i += norm_z_step)
 			{
-				glVertex3f(1, 1, i);
-				glVertex3f(1, -1, i);
+				paint_tools::paint_line(Point(1.0, 1.0, i), Point(1.0, -1.0, i));
 				if (math_tools::is_close(i, 1.0))
 					break;
 			}
-			for (double i = -1;; i += norm_y_step)
+			for (double i = -1.0;; i += norm_y_step)
 			{
-				glVertex3f(1, i, 1);
-				glVertex3f(1, i, -1);
+				paint_tools::paint_line(Point(1.0, i, 1.0), Point(1.0, i, -1.0));
 				if (math_tools::is_close(i, 1.0))
 					break;
 			}
-		glEnd();
 	}
 }
 
 void Axes::paint_xyz_plate() const
 {
-	glColor3f(0.92, 0.92, 0.92);
-	if ((sin(GRAD(Scene::m_sphi)) <= MAX_PHI && (sin(GRAD(Scene::m_sphi)) >= MIN_PHI)))
+	if ((sin(math_tools::grad_to_rad(Scene::m_sphi)) <= MAX_PHI && (sin(math_tools::grad_to_rad(Scene::m_sphi)) >= MIN_PHI)))
 	{
-		glBegin(GL_QUADS);
-			glVertex3f(-1.005, -1.005, 1.005);
-			glVertex3f(-1.005, 1.005, 1.005);
-			glVertex3f(-1.005, 1.005, -1.005);
-			glVertex3f(-1.005, -1.005, -1.005);
-		glEnd();
+		paint_tools::paint_square(Point(-1.005, -1.005, 1.005),
+								  Point(-1.005, 1.005, 1.005), 
+								  Point(-1.005, 1.005, -1.005), 
+								  Point(-1.005, -1.005, -1.005));
 	}else
 	{
-		glBegin(GL_QUADS);
-			glVertex3f(1.005, -1.005, 1.005);
-			glVertex3f(1.005, 1.005, 1.005);
-			glVertex3f(1.005, 1.005, -1.005);
-			glVertex3f(1.005, -1.005, -1.005);
-		glEnd();
+		paint_tools::paint_square(Point(1.005, -1.005, 1.005),
+								  Point(1.005, 1.005, 1.005), 
+								  Point(1.005, 1.005, -1.005), 
+								  Point(1.005, -1.005, -1.005));
 	}
-	if (cos(GRAD(Scene::m_sphi)) <= 0.1 && cos(GRAD(Scene::m_sphi)) >= MIN_PHI)
+	if (cos(math_tools::grad_to_rad(Scene::m_sphi)) <= 0.1 && cos(math_tools::grad_to_rad(Scene::m_sphi)) >= MIN_PHI)
 	{
-		glBegin(GL_QUADS);
-			glVertex3f(1.005, -1.005, 1.005);
-			glVertex3f(-1.005, -1.005, 1.005);
-			glVertex3f(-1.005, -1.005, -1.005);
-			glVertex3f(1.005, -1.005, -1.005);
-		glEnd();
+		paint_tools::paint_square(Point(1.005, -1.005, 1.005),
+								  Point(-1.005, -1.005, 1.005), 
+								  Point(-1.005, -1.005, -1.005), 
+								  Point(1.005, -1.005, -1.005));
 	}
 	else
 	{
-		glBegin(GL_QUADS);
-			glVertex3f(1.005, 1.005, 1.005);
-			glVertex3f(-1.005, 1.005, 1.005);
-			glVertex3f(-1.005, 1.005, -1.005);
-			glVertex3f(1.005, 1.005, -1.005);
-		glEnd();
+		paint_tools::paint_square(Point(1.005, 1.005, 1.005),
+								  Point(-1.005, 1.005, 1.005), 
+								  Point(-1.005, 1.005, -1.005), 
+								  Point(1.005, 1.005, -1.005));
 	}
-	if (cos(GRAD(Scene::m_stheta)) >= MIN_THETA && cos(GRAD(Scene::m_stheta)) <= MAX_THETA)
+	if (cos(math_tools::grad_to_rad(Scene::m_stheta)) >= MIN_THETA && cos(math_tools::grad_to_rad(Scene::m_stheta)) <= MAX_THETA)
 	{
-		glBegin(GL_QUADS);
-			glVertex3f(-1.005, -1.005, 1.005);
-			glVertex3f(-1.005, 1.005, 1.005);
-			glVertex3f(1.005, 1.005, 1.005);
-			glVertex3f(1.005, -1.005, 1.005);
-		glEnd();
+		paint_tools::paint_square(Point(-1.005, -1.005, 1.005),
+								  Point(-1.005, 1.005, 1.005), 
+								  Point(1.005, 1.005, 1.005), 
+								  Point(1.005, -1.005, 1.005));
 	}
 	else 
 	{
-		glBegin(GL_QUADS);
-			glVertex3f(-1.005, -1.005, -1.005);
-			glVertex3f(-1.005, 1.005, -1.005);
-			glVertex3f(1.005, 1.005, -1.005);
-			glVertex3f(1.005, -1.005, -1.005);
-		glEnd();
+		paint_tools::paint_square(Point(-1.005, -1.005, -1.005),
+								  Point(-1.005, 1.005, -1.005), 
+								  Point(1.005, 1.005, -1.005), 
+								  Point(1.005, -1.005, -1.005));
 	}
 	
 }
 
 void Axes::paint_x_axis_text() const
 {		
-		double norm_x_step = (Scene::get_step_x() * 2) / ((Scene::get_max_x() - Scene::get_min_x()));
+		double norm_x_step = (Scene::get_step_x() * 2.0) / ((Scene::get_max_x() - Scene::get_min_x()));
 		double z = 0;
 		double y = 0;
 		double x_label = Scene::get_min_x();
 
-		if (cos(GRAD(Scene::m_stheta)) >= MIN_THETA && cos(GRAD(Scene::m_stheta)) <= MAX_THETA)
+		if (cos(math_tools::grad_to_rad(Scene::m_stheta)) >= MIN_THETA && cos(math_tools::grad_to_rad(Scene::m_stheta)) <= MAX_THETA)
 			z = 1.0;
 		else
 			z = -1.0;
 
-		if ((sin(GRAD(Scene::m_sphi)) <= 1.0 && sin(GRAD(Scene::m_sphi)) >= -1.0) && cos(GRAD(Scene::m_sphi)) > 0.1)
+		if ((sin(math_tools::grad_to_rad(Scene::m_sphi)) <= 1.0 && sin(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0) && cos(math_tools::grad_to_rad(Scene::m_sphi)) > 0.1)
 		{
 			y = -1.1;
 		}
@@ -268,17 +226,17 @@ void Axes::paint_x_axis_text() const
 
 void Axes::paint_y_axis_text() const
 {
-		double norm_y_step = (Scene::get_step_y() * 2) / ((Scene::get_max_y() - Scene::get_min_y()));
+		double norm_y_step = (Scene::get_step_y() * 2.0) / ((Scene::get_max_y() - Scene::get_min_y()));
 		double z = 0;
 		double x = 0;
 		double y_label = Scene::get_min_y();
 		
-		if (cos(GRAD(Scene::m_stheta)) >= -MIN_THETA && cos(GRAD(Scene::m_stheta)) <= -MAX_THETA)
+		if (cos(math_tools::grad_to_rad(Scene::m_stheta)) >= -MIN_THETA && cos(math_tools::grad_to_rad(Scene::m_stheta)) <= -MAX_THETA)
 			z = 1.0;
 		else
 			z = -1.0;
 
-		if ((cos(GRAD(Scene::m_sphi)) <= 1.0 && cos(GRAD(Scene::m_sphi)) >= -1.0) && sin(GRAD(Scene::m_sphi)) <= -0.15)
+		if ((cos(math_tools::grad_to_rad(Scene::m_sphi)) <= 1.0 && cos(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0) && sin(math_tools::grad_to_rad(Scene::m_sphi)) <= -0.15)
 		{
 			x = 1.1;
 		}
@@ -312,28 +270,28 @@ void Axes::paint_y_axis_text() const
 
 void Axes::paint_z_axis_text() const
 {
-		double norm_z_step = (Scene::get_step_z() * 2) / ((Scene::get_max_z() - Scene::get_min_z()));
+		double norm_z_step = (Scene::get_step_z() * 2.0) / ((Scene::get_max_z() - Scene::get_min_z()));
 		double y = 0.0;
 		double x = 0.0;
 
-		if ((sin(GRAD(Scene::m_sphi)) <= -0.15 && sin(GRAD(Scene::m_sphi)) >= -1.0) && (cos(GRAD(Scene::m_sphi)) >= 0.1 && cos(GRAD(Scene::m_sphi)) <= 1.0))
+		if ((sin(math_tools::grad_to_rad(Scene::m_sphi)) <= -0.15 && sin(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0) && (cos(math_tools::grad_to_rad(Scene::m_sphi)) >= 0.1 && cos(math_tools::grad_to_rad(Scene::m_sphi)) <= 1.0))
 		{	
 			x = -1.2;
 			y = -1.2;
 		}
-		if ((sin(GRAD(Scene::m_sphi)) >= -0.15 && sin(GRAD(Scene::m_sphi)) <= 1.0) && (cos(GRAD(Scene::m_sphi)) >= 0.1 && cos(GRAD(Scene::m_sphi)) <= 1.0))
+		if ((sin(math_tools::grad_to_rad(Scene::m_sphi)) >= -0.15 && sin(math_tools::grad_to_rad(Scene::m_sphi)) <= 1.0) && (cos(math_tools::grad_to_rad(Scene::m_sphi)) >= 0.1 && cos(math_tools::grad_to_rad(Scene::m_sphi)) <= 1.0))
 		{
 			x = -1.2;
 			y =  1.2;
 		}
 		
-		if ((sin(GRAD(Scene::m_sphi)) >= -0.15 && sin(GRAD(Scene::m_sphi)) <= 1.0) && (cos(GRAD(Scene::m_sphi)) <= 0.1 && cos(GRAD(Scene::m_sphi)) >= -1.0))
+		if ((sin(math_tools::grad_to_rad(Scene::m_sphi)) >= -0.15 && sin(math_tools::grad_to_rad(Scene::m_sphi)) <= 1.0) && (cos(math_tools::grad_to_rad(Scene::m_sphi)) <= 0.1 && cos(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0))
 		{
 			x = 1.2;
 			y = 1.2;
 
 		}
-		if ((sin(GRAD(Scene::m_sphi)) <= -0.15 && sin(GRAD(Scene::m_sphi)) >= -1.0) && (cos(GRAD(Scene::m_sphi)) <= 0.1 && cos(GRAD(Scene::m_sphi)) >= -1.0))
+		if ((sin(math_tools::grad_to_rad(Scene::m_sphi)) <= -0.15 && sin(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0) && (cos(math_tools::grad_to_rad(Scene::m_sphi)) <= 0.1 && cos(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0))
 		{
 			x =  1.2;
 			y = -1.2;
@@ -366,7 +324,7 @@ void Axes::paint_z_axis_text() const
 
 void Axes::paint_x_axis() const
 {
-	if ((sin(GRAD(Scene::m_sphi)) <= 1.0 && sin(GRAD(Scene::m_sphi)) >= -1.0) && cos(GRAD(Scene::m_sphi)) > 0.1)
+	if ((sin(math_tools::grad_to_rad(Scene::m_sphi)) <= 1.0 && sin(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0) && cos(math_tools::grad_to_rad(Scene::m_sphi)) > 0.1)
 	{
 		paint_tools::paint_line(Point(-1.0, -1.0, -1.0), Point(1.0, -1.0, -1.0), 3);
 	}
@@ -377,7 +335,7 @@ void Axes::paint_x_axis() const
 }
 void Axes::paint_y_axis() const
 {
-	if ((cos(GRAD(Scene::m_sphi)) <= 1.0 && cos(GRAD(Scene::m_sphi)) >= -1.0) && sin(GRAD(Scene::m_sphi)) <= -0.15)
+	if ((cos(math_tools::grad_to_rad(Scene::m_sphi)) <= 1.0 && cos(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0) && sin(math_tools::grad_to_rad(Scene::m_sphi)) <= -0.15)
 	{
 		paint_tools::paint_line(Point(1.0, -1.0, -1.0), Point(1.0, 1.0, -1.0), 3.0);
 	}
@@ -389,20 +347,20 @@ void Axes::paint_y_axis() const
 }
 void Axes::paint_z_axis() const
 {
-	if ((sin(GRAD(Scene::m_sphi)) <= -0.15 && sin(GRAD(Scene::m_sphi)) >= -1.0) && (cos(GRAD(Scene::m_sphi)) >= 0.1 && cos(GRAD(Scene::m_sphi)) <= 1.0))
+	if ((sin(math_tools::grad_to_rad(Scene::m_sphi)) <= -0.15 && sin(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0) && (cos(math_tools::grad_to_rad(Scene::m_sphi)) >= 0.1 && cos(math_tools::grad_to_rad(Scene::m_sphi)) <= 1.0))
 	{	
 		paint_tools::paint_line(Point(-1.0, -1.0, 1.0), Point(-1.0, -1.0, -1.0), 3.0);
 	}
-	if ((sin(GRAD(Scene::m_sphi)) >= -0.15 && sin(GRAD(Scene::m_sphi)) <= 1.0) && (cos(GRAD(Scene::m_sphi)) >= 0.1 && cos(GRAD(Scene::m_sphi)) <= 1.0))
+	if ((sin(math_tools::grad_to_rad(Scene::m_sphi)) >= -0.15 && sin(math_tools::grad_to_rad(Scene::m_sphi)) <= 1.0) && (cos(math_tools::grad_to_rad(Scene::m_sphi)) >= 0.1 && cos(math_tools::grad_to_rad(Scene::m_sphi)) <= 1.0))
 	{
 		paint_tools::paint_line(Point(-1.0, 1.0, 1.0), Point(-1.0, 1.0, -1.0), 3.0);
 	}
 	
-	if ((sin(GRAD(Scene::m_sphi)) >= -0.15 && sin(GRAD(Scene::m_sphi)) <= 1.0) && (cos(GRAD(Scene::m_sphi)) <= 0.1 && cos(GRAD(Scene::m_sphi)) >= -1.0))
+	if ((sin(math_tools::grad_to_rad(Scene::m_sphi)) >= -0.15 && sin(math_tools::grad_to_rad(Scene::m_sphi)) <= 1.0) && (cos(math_tools::grad_to_rad(Scene::m_sphi)) <= 0.1 && cos(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0))
 	{
 		paint_tools::paint_line(Point(1.0, 1.0, 1.0), Point(1.0, 1.0, -1.0), 3.0);
 	}
-	if ((sin(GRAD(Scene::m_sphi)) <= -0.15 && sin(GRAD(Scene::m_sphi)) >= -1.0) && (cos(GRAD(Scene::m_sphi)) <= 0.1 && cos(GRAD(Scene::m_sphi)) >= -1.0))
+	if ((sin(math_tools::grad_to_rad(Scene::m_sphi)) <= -0.15 && sin(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0) && (cos(math_tools::grad_to_rad(Scene::m_sphi)) <= 0.1 && cos(math_tools::grad_to_rad(Scene::m_sphi)) >= -1.0))
 	{
 		paint_tools::paint_line(Point(1.0, -1.0, 1.0), Point(1.0, -1.0, -1.0), 3);
 	}
@@ -524,6 +482,4 @@ void Axes::paint_axes() const
 
 	if (is_z_axis_text_visible())
 		paint_z_axis_text();
-
-
 }

@@ -38,6 +38,8 @@ private:
 	 * @param m_min_z минимальное значение оси z
 	 * @param m_step_z шаг по оси z
 	 * @param m_axes объект системы координат
+	 * @param CAMERA_MAX_DISTANCE максимальное растояние камеры
+	 * @param CAMERA_MIN_DISTANCE минимальное растояние камеры
 	 */
 	static double m_max_x;												
 	static double m_mid_x;												
@@ -53,7 +55,10 @@ private:
 	static double m_mid_z;												
 	static double m_min_z;												
 	static double m_step_z;	
-	static Axes* m_axes;												
+	static Axes* m_axes;
+
+	static const double CAMERA_MAX_DISTANCE;
+	static const double CAMERA_MIN_DISTANCE;											
 	/**
 	 * @brief Блок переменных для определения размеров рабочей области 
 	 *  	  и ее цвета.
@@ -70,7 +75,7 @@ private:
 	float m_red;															
 	float m_green;														
 	float m_blue;															
-	float m_alpha;														
+	float m_alpha;
 	/**
 	 * @brief Блок переменных для определения координат точки находящейся
 	 * 		  под курсором.
@@ -99,13 +104,18 @@ private:
 	 * 		  необходимые для рисования точек, линий, поверхностей.
 	 * @param m_point_series_array указатель на динамический массив точек
 	 * @param m_line_series_array указатель на динамический массив точек линий
-	 * @param m_surface_series_array указатель на динамический массив точек поверхностей
+	 * @param m_surface_series_data_array указатель на динамический массив точек поверхностей
+	 * 
+	 * @param m_point_arr_size количество точек 
+	 * @param m_line_arr_size количество точек линий
 	 * @param m_surface_arr_size количество точек поверхностей
 	 */
 	static double* m_point_series_array;									
 	static double* m_line_series_array;										
-	static double* m_surface_series_array;
+	static double* m_surface_series_data_array;
 	
+	static double* m_surface_series_color_array;
+
 	static std::size_t m_point_arr_size;
 	static std::size_t m_line_arr_size;
 	static std::size_t m_surface_arr_size;								
@@ -364,7 +374,5 @@ public:
 	 * 
 	 * @param step_z присваемое новое значение для m_step_z
 	 */								
-	static void set_step_z(double step_z);									
-														
-
+	static void set_step_z(double step_z);																					
 };

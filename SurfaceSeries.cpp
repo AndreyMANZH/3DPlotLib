@@ -1,9 +1,9 @@
 #include "SurfaceSeries.h"
 
 SurfaceSeries::SurfaceSeries():
-	m_vector_surfaces(nullptr), m_points_count(0)
+	m_vector_surfaces(new std::vector<Surface*>), m_points_count(0)
 {	
-	m_vector_surfaces = new std::vector<Surface*>;
+
 }
 
 SurfaceSeries::~SurfaceSeries()
@@ -24,10 +24,12 @@ Surface* SurfaceSeries::operator[](int index)
 {
 	return m_vector_surfaces->at(index);
 }
+
 std::size_t SurfaceSeries::get_size()
 {
 	return m_vector_surfaces->size();
 }
+
 std::size_t SurfaceSeries::get_points_count()
 {
 	return m_points_count;

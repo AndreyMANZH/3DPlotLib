@@ -29,9 +29,18 @@ public:
 	 * @param l добавляемая линия
 	 */
 	void add_line(Line  *l);
-
+	/**
+	 * @brief Оператор доступа по индексу
+	 * 
+	 * @param index индекс
+	 * @return Line* указатель
+	 */
 	Line* operator[](const std::size_t index);
-
+	/**
+	 * @brief Размер вектора линий
+	 * 
+	 * @return std::size_t 
+	 */
 	std::size_t get_size() const;
 };
 
