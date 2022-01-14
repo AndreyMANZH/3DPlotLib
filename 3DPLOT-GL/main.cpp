@@ -23,7 +23,7 @@ int main(int arg, char** argv)
 	if (HumidAir != NULL)
 	{
 
-		std::cout << " Библиотека  загружена!" << std::endl;
+		//std::cout << " пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!" << std::endl;
 
 		FARPROC addr = (GetProcAddress(HumidAir, "Enthalpy"));
 		typedef double (*funcPtr)(double, double, double);
@@ -49,7 +49,7 @@ int main(int arg, char** argv)
 	
 	double p[8] = {50000,100000, 200000, 300000, 400000, 500000, 600000, 700000};
 	double R[6] = { 0.1, 0.2, 0.3, 0.6, 0.8, 1.0};
-	/*Point pt;
+	Point pt;
 	double ent = 0;
 	Surface::SurfaceRow* sr;
 	SurfaceSeries ss;
@@ -76,7 +76,7 @@ int main(int arg, char** argv)
 		ss.push_back(surf);
 	}
 	std::cout<< "POINTS COUNT : " << point << std::endl;
-	LineSeries ls;
+	/*LineSeries ls;
 	
 	
 	Point pt2(-2, -0.2, 200000, 1, 0, 0);
@@ -103,7 +103,7 @@ int main(int arg, char** argv)
 	ps.push_back(pt5);
 	ps.push_back(pt7);
 	ps.push_back(pt8);*/
-	
+	/*
 		Surface::SurfaceRow* sr;
 		SurfaceSeries ss;
 		Surface* surf;
@@ -119,8 +119,7 @@ int main(int arg, char** argv)
 
 		Scene::setMaxZ(1);
 		Scene::setMinZ(-0.5);
-		Scene::setStepZ(0.1)
-			;
+		Scene::setStepZ(0.1);
 
 	
 	double z = 0;
@@ -136,12 +135,12 @@ int main(int arg, char** argv)
 			ps.push_back(pt);
 		}
 		surf->push_back(sr);
-	}
+	}*/
 	
 	std::thread t(test);
 	ss.push_back(surf);
-	s->push_PointSeries(ps);
-	//s->push_LineSeries(ls);
+	//s->push_PointSeries(ps);
+
 	s->push_SurfaceSeries(ss);
 
 	std::cout << "-----POINTS COUNT : " << ss.get_points_count() << std::endl;

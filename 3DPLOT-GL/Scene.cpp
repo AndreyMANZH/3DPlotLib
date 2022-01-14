@@ -116,6 +116,7 @@ void Scene::GLinit()
 	glEnable(GL_COLOR_MATERIAL);
 	// Свойство материала
 	glColorMaterial(GL_FRONT, GL_DIFFUSE);
+
 	// Обратобка ввод/вывод
 	glutDisplayFunc(Scene::DisplayCallback);
 	glutReshapeFunc(Scene::ReshapeCallback);
@@ -148,7 +149,9 @@ void Scene::DisplayCallback()
 		stheta = 0;
 	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+	GLfloat material_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
+
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, material_diffuse);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(64, aspect, zNear, zFar);
@@ -166,23 +169,7 @@ void Scene::DisplayCallback()
 	DrawPointSeries();
 	DrawLineSeries();
 	DrawSurfaceSeries();
-	/*
-	
 
-
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-		glPointSize(10);
-		glBegin(GL_POINTS);
-		glVertex3f(cos(sphi * 3.14 / 180), 1, cos(stheta * 3.14 / 180));
-		glEnd();
-		glPointSize(1);
-		float light_pos[4] = { cos(sphi * 3.14 / 180), 1, cos(stheta * 3.14 / 180), 1 };
-		glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
-		DrawSurfaceSeries();
-	glDisable(GL_LIGHTING);
-	glDisable(GL_LIGHT0);
-	*/
 	if (selectX > -2 && selectY > -2 && selectX > -2)
 		DrawProjLine();
 
@@ -428,7 +415,7 @@ void Scene::push_LineSeries(LineSeries& lineSeries)
 			Scene::lineSeriesArray[j + 3] = x;
 			Scene::lineSeriesArray[j + 4] = y;
 			Scene::lineSeriesArray[j + 5] = z;
-			// увеличение на 6 с учетом 6-х записаных координат
+			//занесение данные в массив по j-му индексу
 			j += 6;
 		}
 	}
@@ -561,7 +548,7 @@ void Scene::push_SurfaceSeries(SurfaceSeries& surfaceSeries)
 
 void Scene::DrawPointSeries()
 {
-	glColor3f(1, 1, 0);
+	glColor3f(1, 0, 1);
 	glPointSize(10);
 	glVertexPointer(3, GL_DOUBLE, 0, Scene::pointSeriesArray);
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -580,16 +567,37 @@ void Scene::DrawLineSeries()
 
 void Scene::DrawSurfaceSeries()
 {
-	std::cout << array_size << "test \n";
-	std::cout << Scene::surfaceSeriesArray[array_size-1] << "test \n";
+	if (array_size != 0)
+	{
+		glEnable(GL_LIGHTING);
+		glEnable(GL_LIGHT0);
+		glPointSize(10);
+		glBegin(GL_POINTS);
+		glVertex3f(1, 1, 1);
+		glEnd();
+		glPointSize(1);
+		float light_pos[4] = { 1, 1, -1, 0.1 };
+		//glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
+		GLfloat light1_diffuse[] = { 1, 1, 1 };
+
+		GLfloat light1_position[] = { 0.0, 1.0, 1.0, 1.0 };
+
+		glEnable(GL_LIGHT1);
+
+		glLightfv(GL_LIGHT1, GL_DIFFUSE, light1_diffuse);
+
+		glLightfv(GL_LIGHT1, GL_POSITION, light1_position);
 
 
-	glColor3f(0, 1, 1);
-	glVertexPointer(3, GL_DOUBLE, 0, Scene::surfaceSeriesArray);
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glDrawArrays(GL_TRIANGLES, 0, array_size/3);
-	glDisableClientState(GL_VERTEX_ARRAY);
-	
+		glColor3f(0, 1, 1);
+		glVertexPointer(3, GL_DOUBLE, 0, Scene::surfaceSeriesArray);
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glDrawArrays(GL_TRIANGLES, 0, array_size/3);
+		glDisableClientState(GL_VERTEX_ARRAY);
+
+		glDisable(GL_LIGHTING);
+		glDisable(GL_LIGHT0);
+	}
 }
 double Scene::getMaxX()
 {
