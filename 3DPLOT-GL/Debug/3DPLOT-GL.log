@@ -1,0 +1,30 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: промежуточный каталог (Debug\) содержит файлы, которые используются совместно с другим проектом (3D CHAR SOFT.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+  Scene.cpp
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(203,35): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(203,71): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(208,38): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(261,22): warning C4018: <: несоответствие типов со знаком и без знака
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(452,23): warning C4018: <: несоответствие типов со знаком и без знака
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(480,23): warning C4018: <: несоответствие типов со знаком и без знака
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(432,13): warning C4101: g: неиспользованная локальная переменная
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(432,10): warning C4101: r: неиспользованная локальная переменная
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(579,40): warning C4305: инициализация: усечение из "double" в "float"
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(736,52): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(736,36): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(736,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(737,45): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(737,36): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(737,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(739,52): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(739,36): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(739,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(740,39): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(740,29): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(740,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(742,52): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(742,36): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(742,20): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(743,39): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(743,23): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+F:\GIT\3D PLOT\SOFT\3DPLOT-GL\3DPLOT-GL\Scene.cpp(743,13): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+  3DPLOT-GL.vcxproj -> F:\GIT\3D PLOT\SOFT\3DPLOT-GL\Debug\3DPLOT-GL.exe

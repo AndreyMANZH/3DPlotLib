@@ -1,0 +1,13 @@
+
+*.ipch
+*.ipch
+*.obj
+x64/Debug/3DPLOT-GL.pdb
+*.pdb
+*.log
+*.recipe
+*.lastbuildstate
+*.tlog
+*.obj
+*.pdb
+*.ilk
